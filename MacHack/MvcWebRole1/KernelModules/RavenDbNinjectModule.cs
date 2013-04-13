@@ -17,13 +17,7 @@ namespace MvcWebRole1.KernelModules
               NonAdminHttp.EnsureCanListenToWhenInNonAdminContext(8080);
               var documentStore = new EmbeddableDocumentStore
               {
-                  DataDirectory = "App_Data",
-                  UseEmbeddedHttpServer = true,
-                  Configuration =
-                  {
-                      Port = 8081,
-                      AnonymousUserAccessMode = AnonymousUserAccessMode.All
-                  }
+                  DataDirectory = "App_Data"
               };
               return documentStore.Initialize();
           })
