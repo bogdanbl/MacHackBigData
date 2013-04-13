@@ -15,16 +15,4 @@
       <Import moduleName="Diagnostics" />
     </Imports>
   </WebRole>
-  <WorkerRole name="RavenWorkerRole" vmsize="Small">
-    <Runtime executionContext="elevated" />
-    <Imports>
-      <Import moduleName="Diagnostics" />
-    </Imports>
-    <Endpoints>
-      <InputEndpoint name="Raven" protocol="http" port="8080" localPort="8080" />
-    </Endpoints>
-    <LocalResources>
-      <LocalStorage name="RavenCache" cleanOnRoleRecycle="false" sizeInMB="1024" />
-    </LocalResources>
-  </WorkerRole>
 </ServiceDefinition>
