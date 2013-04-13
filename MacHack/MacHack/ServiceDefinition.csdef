@@ -16,7 +16,7 @@
     </Imports>
   </WebRole>
   <WorkerRole name="RavenWorkerRole" vmsize="Small">
-    <Runtime executionContext ="elevated" />
+    <Runtime executionContext="elevated" />
     <Imports>
       <Import moduleName="Diagnostics" />
     </Imports>

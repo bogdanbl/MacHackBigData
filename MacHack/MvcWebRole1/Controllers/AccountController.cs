@@ -7,6 +7,8 @@ using System.Web.Mvc;
 using System.Web.Security;
 using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
+using Raven.Client;
+using Raven.Client.Embedded;
 using WebMatrix.WebData;
 using MvcWebRole1.Filters;
 using MvcWebRole1.Models;
@@ -17,6 +19,33 @@ namespace MvcWebRole1.Controllers
     [InitializeSimpleMembership]
     public class AccountController : Controller
     {
+        private readonly IDocumentSession _documentSession;
+
+        public AccountController(IDocumentSession documentSession)
+        {
+            _documentSession = documentSession;
+        }
+
+        [AllowAnonymous]
+        public ActionResult Store()
+        {
+            InfrastructureIndex infIndes = new InfrastructureIndex
+                                               {
+                                                   test = DateTime.Now.ToLongDateString()
+                                               };
+            _documentSession.Store(infIndes);
+            _documentSession.SaveChanges();
+            return RedirectToAction("Index", "Home");
+        }
+
+        [AllowAnonymous]
+        public ActionResult Display()
+        {
+            
+            var infInd = _documentSession.Query<InfrastructureIndex>().FirstOrDefault();
+            return View(infInd);
+        }
+
         //
         // GET: /Account/Login
 
@@ -403,5 +432,10 @@ namespace MvcWebRole1.Controllers
             }
         }
         #endregion
+    }
+
+    public class InfrastructureIndex
+    {
+        public string test { get; set; }
     }
 }
