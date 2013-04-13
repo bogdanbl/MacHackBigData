@@ -1,2 +1,0 @@
-E:\MacHack\MacHackBigData\MacHack\MacHack\bin\Debug\ServiceConfiguration.cscfg
-E:\MacHack\MacHackBigData\MacHack\MacHack\bin\Debug\ServiceDefinition.csdef
