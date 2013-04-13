@@ -21,8 +21,8 @@ namespace MvcWebRole1.KernelModules
                   UseEmbeddedHttpServer = true,
                   Configuration =
                   {
-                      Port = 8080,
-                      AnonymousUserAccessMode = AnonymousUserAccessMode.None
+                      Port = 8081,
+                      AnonymousUserAccessMode = AnonymousUserAccessMode.All
                   }
               };
               return documentStore.Initialize();
